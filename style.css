@@ -38,6 +38,8 @@ header .fa-bars{
     display: none;
     border-radius: .5rem;
     padding: .5rem 1.5rem;
+    cursor: pointer;
+    display: none;
 }
 .logo{
     width: auto;
@@ -50,6 +52,7 @@ header .fa-bars{
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-areas: "imagen texto";
+    
 }
 #home{
     width: 100%;
@@ -73,6 +76,7 @@ header .fa-bars{
 .information h1{
     font-size: 4rem;
     font-family: gavoline;
+    text-align: center;
 }
 .information p{
     font-size: 1.5rem;
@@ -84,6 +88,95 @@ header .fa-bars{
     border-radius: 15px;
     font-size: 1rem;
 }
+.information button:hover{
+    background-color: #649dda;
+}
 .button{
     color: black;
+}
+
+
+.image-products{
+    height: 25rem;
+}
+
+
+/* .box{
+    flex:1 1 30rem;
+    box-shadow: 0 .5rem 1.5rem red;
+    border-radius: .5rem;
+    border: .1 rem solid red;
+    position: relative;
+    display: flex;
+    width: 20%;
+    margin-top: 4%;
+}
+.buy-car{
+    background-color: #2EBAE2;
+    border-radius: 10px;
+    width:5vw;
+}
+.ri-shopping-cart-2-line{
+    color: black;
+}*/
+.product{
+    font-size: 2rem;
+    text-align: center;
+    background-color: #1e78d8;
+    padding: 2vh;
+} 
+.shopping {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2vh;
+    justify-content: center;
+    padding: 2vh;
+    background-color: #9cbfee;
+}
+
+.container {
+    display: flex;
+    flex-direction: column; 
+    height: auto;
+    background-color: #f0f4f8;
+    align-items: center;
+    border-radius: 10px;
+    padding: 1vh;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+@media(max-width:800px){
+    header{
+        font-size: 55%;
+    }
+    section{
+        padding: 2rem;
+    }
+    .home{
+        background-position: left;
+    }
+    header .fa-bars{
+        display: block;
+    }
+    header .navbar{
+        position: absolute;
+        top: 100%;
+        right: 0;
+        left: 0;
+        clip-path:polygon(0 0, 100% 0,100% 0, 0 0);
+    }
+    #menu:checked ~ .navbar{
+        clip-path: polygon(0 0, 100% 0,100% 100%,0 100%);
+    }
+     header .navbar a{
+        margin: 1.5rem;
+        padding: 1.5rem;
+        display: block;
+    }
+    .information h1{
+        font-size: 5rem;
+    }
+   .heading{
+    font-size: 3rem;
+    }
 }
