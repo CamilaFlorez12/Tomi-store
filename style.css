@@ -48,7 +48,7 @@ header .fa-bars{
 }
 
 #home{
-    background-color:#BFE4F2 ;
+    background-color:#9cbfee;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-areas: "imagen texto";
@@ -62,7 +62,7 @@ header .fa-bars{
 #home img{
     grid-area: imagen;
     margin-top: 20vh;
-    padding: 5vh;
+    margin-left: 15vh;
     border-radius: 80px;
 }
 .information{
@@ -82,14 +82,14 @@ header .fa-bars{
     font-size: 1.5rem;
 }
 .information button{
-    background-color: #2EBAE2;
+    background-color: #2e94e2;
     padding: 1.5vh;
     width: 10vw;
     border-radius: 15px;
     font-size: 1rem;
 }
 .information button:hover{
-    background-color: #649dda;
+    background-color: #076cd8;
 }
 .button{
     color: black;
@@ -97,34 +97,76 @@ header .fa-bars{
 
 
 .image-products{
-    height: 25rem;
+    width: 9vw;;
 }
 
-
-/* .box{
-    flex:1 1 30rem;
-    box-shadow: 0 .5rem 1.5rem red;
-    border-radius: .5rem;
-    border: .1 rem solid red;
-    position: relative;
+.nav{
     display: flex;
-    width: 20%;
-    margin-top: 4%;
+    background-color: #020230;
 }
-.buy-car{
-    background-color: #2EBAE2;
-    border-radius: 10px;
-    width:5vw;
-}
-.ri-shopping-cart-2-line{
-    color: black;
-}*/
+
 .product{
-    font-size: 2rem;
+    font-size: 4rem;
     text-align: center;
-    background-color: #1e78d8;
+    color: white;
     padding: 2vh;
+    border-radius: 5px;
+    width: 50%;
 } 
+
+.search {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.search__input {
+  font-family: inherit;
+  font-size: inherit;
+  background-color: #f4f2f2;
+  border: none;
+  color: #646464;
+  padding: 0.7rem 1rem;
+  border-radius: 30px;
+  width: 40vw;
+  transition: all ease-in-out .5s;
+  margin-right: -2rem;
+}
+
+.search__input:hover, .search__input:focus {
+  box-shadow: 0 0 1em #00000013;
+}
+
+.search__input:focus {
+  outline: none;
+  background-color: #f0eeee;
+}
+
+.search__input::-webkit-input-placeholder {
+  font-weight: 100;
+  color: #323238;
+}
+
+.search__input:focus + .search__button {
+  background-color: #f0eeee;
+}
+
+.search__button {
+  border: none;
+  background-color: #f4f2f2;
+  margin-top: .1em;
+}
+
+.search__button:hover {
+  cursor: pointer;
+}
+
+.search__icon {
+  height: 1.3em;
+  width: 1.3em;
+  fill: #010128;
+}
 .shopping {
     display: flex;
     flex-wrap: wrap;
@@ -137,14 +179,45 @@ header .fa-bars{
 .container {
     display: flex;
     flex-direction: column; 
-    height: auto;
+    height: 60vh;
+    width: 20vw;
     background-color: #f0f4f8;
     align-items: center;
     border-radius: 10px;
     padding: 1vh;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px darkblue;
 }
 
+.list-products{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    justify-content: space-around;
+    text-align: center;
+}
+.buy-car{
+    background-color: #03033a;
+    padding: 1vh;
+    border-radius: 10px;
+    width: 80%;
+    margin-left: 2vw;
+}
+.buy-car:hover{
+    background-color: #02021e;
+}
+
+.ri-shopping-cart-2-line{
+    color: white;
+    font-size: 1.3rem;
+}
+.money-product{
+    font-size: 2rem;
+}
+
+.ri-home-smile-line:hover,.ri-shopping-bag-3-line:hover,.ri-shopping-cart-2-line:hover{
+    color: #2e94e2;
+}
 @media(max-width:800px){
     header{
         font-size: 55%;
@@ -179,4 +252,66 @@ header .fa-bars{
    .heading{
     font-size: 3rem;
     }
+    #home{
+    display: flex;
+    flex-direction: column;    
+}
+    #home img{
+    margin-top: 10vh;
+    margin-left: 0vh;
+}
+    .information h1{
+    font-size: 2rem;
+    line-height: 5vh;
+    padding: 2vh;
+}
+.information p{
+    font-size: 1.1rem;
+}
+.information button{
+    text-align: center;
+    width: 20vw;
+    font-size: 1rem;
+}
+#home{
+    height: 100%;
+}
+.logo{
+    width: auto;
+    height: 7vh;
+    margin-right: 5vh;
+}
+.ri-home-smile-line,.ri-shopping-bag-3-line,.ri-shopping-cart-2-line{
+    font-size: 0rem;
+    line-height: 0vh;
+}
+.product{
+    font-size: 2rem;
+} 
+#products-shopping{
+    width: 100vw;
+    padding: 0;
+}
+.search__input{
+    margin-left: 3vw;
+}
+.name-product{
+    font-size: 0.6rem;
+    text-align:center;
+}
+.money-product{
+    font-size: 1rem;
+}
+.list-products,.container{
+    height: 30vh;
+}
+.ri-shopping-cart-2-line{
+    font-size: 0.8rem;
+}
+.buy-car{
+    padding: 0.5vh; 
+}
+.navbar i{
+    color: rgb(25, 25, 190);
+}
 }
