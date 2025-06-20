@@ -1,15 +1,15 @@
 async function cargarProductos() {
-    const contenedor = document.getElementById("shopping");
+  const contenedor = document.getElementById("shopping");
 
-    try {
-      const respuesta = await fetch("https://fakestoreapi.com/products");
+  try {
+    const respuesta = await fetch("https://fakestoreapi.com/products");
 
-      const productos = await respuesta.json();
+    const productos = await respuesta.json();
 
-      for (let i = 0; i < productos.length; i++) {
-        const producto = productos[i];
+    for (let i = 0; i < productos.length; i++) {
+      const producto = productos[i];
 
-        const productoHTML = `
+      const tarjeta = `
             <div class="box">
           <div class="container">
             <img src="${producto.image}" alt="${producto.title}" class="image-products">
@@ -24,12 +24,25 @@ async function cargarProductos() {
           </div>
         `;
 
-        contenedor.innerHTML += productoHTML;
-      }
-
-    } catch (error) {
-      console.log("Ocurrió un error al cargar los productos", error);
+      contenedor.innerHTML += tarjeta;
     }
+
+  } catch (error) {
+    console.log("Ocurrió un error al cargar los productos", error);
   }
 
-  cargarProductos();
+}
+
+cargarProductos().then(() => {
+  const container = document.querySelectorAll(".container");
+  container.forEach((item) => {
+    item.addEventListener("mouseover", () => {
+      item.style.transform = 'scale(1.05)';
+      item.style.transition = "transform 0.3s ease";
+    });
+    item.addEventListener("mouseout", () => {
+      item.style.transform = "scale(1)";
+    })
+
+  })
+});
