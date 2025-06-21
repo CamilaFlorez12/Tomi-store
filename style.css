@@ -10,6 +10,10 @@
     src: url(./tipografias/GavolineDemo.otf);
 }
 
+@font-face {
+    font-family: 'cinzel';
+    src: url(./tipografias/Cinzel-Regular.otf);
+}
 header{
     position: fixed;
     top: 0;
@@ -145,7 +149,7 @@ header .fa-bars{
 
 .search__input::-webkit-input-placeholder {
   font-weight: 100;
-  color: #323238;
+  color: #6d6d72;
 }
 
 .search__input:focus + .search__button {
@@ -218,6 +222,42 @@ header .fa-bars{
 .ri-home-smile-line:hover,.ri-shopping-bag-3-line:hover,.ri-shopping-cart-2-line:hover{
     color: #2e94e2;
 }
+.ri-shirt-line{
+    margin-left: 2vh;
+    margin-top: 2vh;
+    font-size: 4rem;
+}
+.container-clothes{
+    display: none;
+    flex-direction: column;
+    font-size: 2rem;
+    width: 20%;
+    gap: 2vh;
+}
+#name,#price{
+    padding: 1.5vh;
+    border-radius: 10px;
+}
+.car-shopping{
+    width: 100%;
+    height: 100%;
+    background-color:#9cbfee;
+}
+
+.ri-shirt-fill,.ri-vip-diamond-fill,.ri-computer-fill,.ri-t-shirt-fill{
+    font-size: 2rem;
+}
+
+.button-woman,.button-men,.button-jewelery,.button-electronics{
+    font-family:cinzel;
+    margin-left: 15vw;
+    padding: 1.5vh;
+   
+}
+.container-opcion{
+    background-color: #9cbfee;
+}
+
 @media(max-width:800px){
     header{
         font-size: 55%;
