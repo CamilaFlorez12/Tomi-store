@@ -32,10 +32,14 @@ function renderProducts(lista) {
         </div>
         </div>
       `;
-    container.appendChild(tarjeta)
-  })
+    container.appendChild(tarjeta);
+    
+  }
+  );agregarfuncionboton();
+}
 
-  document.querySelectorAll(".add-to-cart").forEach(button => {
+
+  function agregarfuncionboton(){document.querySelectorAll(".add-to-cart").forEach(button => {
     button.addEventListener("click", () => {
       const id = parseInt(button.getAttribute("data-id"));
       const product = products.find(product => product.id === id);
@@ -90,6 +94,17 @@ if (document.body.classList.contains("car-shopping")) {
         location.reload();
       });
     });
+    const buttonBuy=document.querySelectorAll(".buy");
+    buttonBuy.forEach(button=>{
+      button.addEventListener("click",()=>{
+        const index=parseInt(button.getAttribute("index"));
+        const car=JSON.parse(localStorage.getItem("car"))||[];
+        car.splice(index,1);
+        localStorage.setItem("car",JSON.stringify(car));
+        location.reload();
+        alert("Producto comprado");
+      })
+    })
   }
   
   
@@ -113,37 +128,69 @@ if (document.body.classList.contains("login-page")) {
     container.innerHTML = "";
     filter.forEach(product => {
       const tarjeta = `
-       <div class="box">
-          <div class="container">
-            <img src="${product.image}" alt="${product.title}" class="image-products">
-            <div class="list-products">
-              <h3 class="name-product">${product.title}</h3>
-              <p class="money-product">$${product.price}</p>
-              <div class="buy-car">
-                <a href="#car-shopping"><i class="ri-shopping-cart-2-line"></i></a>
-              </div>
-            </div>
-          </div>
-          </div>
-      `
+       <div class="container">
+      <img src="${product.image}" alt="${product.title}" class="image-products">
+      <div class="list-products">
+        <h3 class="name-product">${product.title}</h3>
+        <p class="money-product">$${product.price}</p>
+        <div class="buy-car">
+        <button class="add-to-cart" data-id="${product.id}">
+        <i class="ri-shopping-cart-2-line"></i>
+        </button>
+        </div>
+        </div>
+        </div>
+      `;
+      
       container.innerHTML += tarjeta;
     })
+    
   }
+
+const searchbar=document.querySelector(".search__input");
+searchbar.addEventListener("input",()=>{  const valueInput=searchbar.value.toLowerCase();
+    document.getElementById("shopping").innerHTML="";
+    products.forEach(product=>{
+      if(product.title.toLowerCase().includes(valueInput)){
+          const tarjeta = document.createElement("div");
+    tarjeta.className = "box";
+    tarjeta.innerHTML = `
+      <div class="container">
+      <img src="${product.image}" alt="${product.title}" class="image-products">
+      <div class="list-products">
+        <h3 class="name-product">${product.title}</h3>
+        <p class="money-product">$${product.price}</p>
+        <div class="buy-car">
+        <button class="add-to-cart" data-id="${product.id}">
+        <i class="ri-shopping-cart-2-line"></i>
+        </button>
+        </div>
+        </div>
+        </div>
+      `;
+    document.getElementById("shopping").appendChild(tarjeta)
+      }
+    })})
+ 
+
   const buttonWomen = document.getElementById("button-women");
   const buttonMen = document.getElementById("button-men");
   const buttonjewelery = document.getElementById("button-jewelery");
   const buttonElectronics = document.getElementById("button-electronics")
   buttonWomen.addEventListener("click", () => {
     filterCategory("women's clothing");
+     agregarfuncionboton();
   });
   buttonMen.addEventListener("click", () => {
     filterCategory("men's clothing");
+     agregarfuncionboton();
   })
   buttonjewelery.addEventListener("click", () => {
     filterCategory("jewelery");
+     agregarfuncionboton();
   })
   buttonElectronics.addEventListener("click", () => {
-    filterCategory("electronics");
+    filterCategory("electronics"); agregarfuncionboton();
   })
 
   function VewProducts(products) {
