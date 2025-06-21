@@ -257,7 +257,25 @@ header .fa-bars{
 .container-opcion{
     background-color: #9cbfee;
 }
-
+#car-container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2vh;
+}
+.tarjet{
+    display: flex;
+    flex-direction: column;
+    height: 20vh;
+    width: 20vw;
+    background-color: #f0f4f8;
+    align-items: center;
+    border-radius: 10px;
+    padding: 1vh;
+    box-shadow: 0 0 10px darkblue;
+}
+.tarjet img{
+    width: 20%;
+}
 @media(max-width:800px){
     header{
         font-size: 55%;
