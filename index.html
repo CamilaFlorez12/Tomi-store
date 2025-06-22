@@ -18,21 +18,25 @@
         <img src="./imagenes/logo-tienda.png" alt="logo tienda" class="logo">
         <nav class="navbar">
             <a href="#home"><i class="ri-home-smile-line"></i></a>
-            <a href="#products-shopping"><i class="ri-shopping-bag-3-line"></i></a>
-            <a href="./car-shopping.html"><i class="ri-shopping-cart-2-line"></i></a>
+            <a href="#nav"><i class="ri-shopping-bag-3-line"></i></a>
+            <a href="#" class="carrito-icon">
+                <i class="ri-shopping-cart-2-line"></i>
+                <span class="contador">0</span>
+            </a>
+             
         </nav>
     </header>
+    <section id="car-container"></section>
     <main>
         <section id="home">
-            <img src="./imagenes/imagen principal pag1.webp">
             <div class="information">
-                <h1>FIND YOUR FAVORITE PRODUCTS</h1>
-                <p>Quality and great service in every product.</p>
-                <button><a href="#products-shopping" class="button" type="button">Here</a></button>
+                <h1>Stile, Elegance and Tecnology</h1>
+                <p>Discover our exclusive selection of clothing,jewelry, and tecnhnology. Everything you need to express your unique style.</p>
+                <a href="#nav" class="button"><button>Explore Here</button></a>
             </div>
         </section>
         <section id="products-shopping">
-            <article class="nav">
+            <article id="nav">
                 <h2 class="product">PRODUCTS</h2>
                 <div class="search">
                     <input type="text" class="search__input" placeholder="Enter the product name">
@@ -47,21 +51,31 @@
                     </button>
                 </div>
             </article>
-            <div class="container-opcion">
-            <i class="ri-shirt-line" id="icon-clothes">
-                <div class="container-clothes">
-                    <button id="price">Price</button>
-                    <button id="name">Name</button>
-                </div>
-                </i>
-            <button class="button-woman" id="button-women"><i class="ri-t-shirt-fill"></i>Woman</button>
-            <button class="button-men" id="button-men"><i class="ri-shirt-fill"></i>Men</button>
-            <button class="button-jewelery" id="button-jewelery"><i class="ri-vip-diamond-fill"></i>Jewelery</button>
-            <button class="button-electronics" id="button-electronics"><i class="ri-computer-fill"></i>Electronics</button>
-            </div>
             <section id="shopping" class="shopping">
             </section>
-
+            <section class="categories">
+            <h2>Our Categories</h2>
+            <article class="women-section">
+            <i class="ri-t-shirt-fill"></i>
+            <p>Explore the world of fashion and elegance</p>
+            <button class="button-woman" id="button-women">Woman</button>
+            </article>
+            <article class="men-section">
+            <i class="ri-shirt-fill"></i>
+            <p>Style for every man, every mood, every moment</p>
+            <button class="button-men" id="button-men">Men</button>
+            </article>
+            <article class="jewelry-section">
+            <i class="ri-vip-diamond-fill"></i>
+            <p>Exclusive pieces that elevate your elegance</p>
+            <button class="button-jewelery" id="button-jewelery">jewelry</button>
+            </article>
+            <article class="electronics-section">
+            <i class="ri-computer-fill"></i>
+            <p>The latest in innovation and design</p>
+            <button class="button-electronics" id="button-electronics">Electronics</button>
+            </article>
+        </section>
         </section>
     </main>
 </body>
