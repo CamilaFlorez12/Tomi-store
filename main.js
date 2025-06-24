@@ -54,7 +54,13 @@ function agregarfuncionboton() {
       const id = parseInt(button.getAttribute("data-id"));
       const product = products.find((product) => product.id === id);
       let car = JSON.parse(localStorage.getItem("car")) || [];
-      car.push(product);
+      const existe=car.find((item)=>item.id===id);
+      if (existe){
+        existe.cantidad+=1
+      } else{
+        car.push({ ...product, cantidad: 1 });
+        
+      }
       localStorage.setItem("car", JSON.stringify(car));
       actualizarContador();
       console.log("producto agregado:", product);
@@ -100,11 +106,12 @@ if (document.getElementById("car-container")) {
       const tarjeta = document.createElement("div");
       tarjeta.classList.add("tarjet");
       tarjeta.innerHTML = `
+      <p class="cantidad">Cantidad:${product.cantidad}</p>
       <img src="${product.image}" alt="${product.title}">
       <h3 class="name-product">${product.title}</h3>
       <p class="money-product">$${product.price}</p>
-      <button class="eliminate" data-index="${index}">Eliminate</button>
-      <button class="buy" data-index="${index}">Buy</button>
+      <button class="eliminate" data-index="${index}">Delete</button>
+      
     `;
       contenedor.appendChild(tarjeta);
     });
@@ -113,24 +120,27 @@ if (document.getElementById("car-container")) {
       button.addEventListener("click", () => {
         const index = parseInt(button.getAttribute("data-index"));
         const car = JSON.parse(localStorage.getItem("car")) || [];
-        car.splice(index, 1);
+        if(car[index].cantidad>1){
+          car[index].cantidad-=1
+        }else{
+          car.splice(index, 1);
+        }
         localStorage.setItem("car", JSON.stringify(car));
         renderizarCarrito();
         actualizarContador();
       });
     });
-    const buttonBuy = document.querySelectorAll(".buy");
-    buttonBuy.forEach((button) => {
-      button.addEventListener("click", () => {
-        const index = parseInt(button.getAttribute("data-index"));
-        const car = JSON.parse(localStorage.getItem("car")) || [];
-        car.splice(index, 1);
-        localStorage.setItem("car", JSON.stringify(car));
+    const finishBuy=document.createElement("button")
+    finishBuy.classList.add("buy");
+    finishBuy.textContent="Checkout"
+    finishBuy.addEventListener("click", () => {
+      alert("Compra Realizada")
+        localStorage.removeItem("car");
         renderizarCarrito();
         actualizarContador();
-        alert("Producto comprado");
-      });
     });
+    contenedor.appendChild(finishBuy);
+    
   }
 
   const car = document.querySelector(".ri-shopping-cart-2-line");
@@ -193,7 +203,9 @@ if (document.body.classList.contains("login-page")) {
         document.getElementById("shopping").appendChild(tarjeta);
       }
     });
+    agregarfuncionboton();
   });
+  
 
   const buttonWomen = document.getElementById("button-women");
   const buttonMen = document.getElementById("button-men");

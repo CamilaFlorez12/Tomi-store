@@ -314,7 +314,7 @@ header .fa-bars{
 .tarjet{
     display: flex;
     flex-direction: column;
-    height: 30vh;
+    height: auto;
     width: 15vw;
     background-color: #f0f4f8;
     align-items: center;
@@ -324,6 +324,16 @@ header .fa-bars{
     padding: 2vh;
     box-shadow: 0 0 10px darkblue;
     margin-bottom: 2vh;
+}
+.name-product{
+    font-size: 1rem;
+}
+.eliminate,.buy,.finish{
+    margin-bottom: 1vh;
+    width: 100%;
+    border-radius: 40px;
+    padding: 1vh;
+    background-color: #ef4fefa2;
 }
 .tarjet img{
     width: 20%;
@@ -404,6 +414,9 @@ header .fa-bars{
 .ri-arrow-left-circle-fill{
     color: black;
     font-size: 5rem;
+}
+#car-container{
+    width:80%;
 }
 
 @media(max-width:800px){
