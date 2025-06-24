@@ -38,6 +38,7 @@ function renderProducts(lista) {
     container.appendChild(tarjeta);
   });
   agregarfuncionboton();
+  actualizarContador()
 }
 
 function actualizarContador() {
@@ -80,6 +81,7 @@ if (document.body.classList.contains("category-page")) {
   products = filtered;
   console.log("Productos filtrados:", products);
   renderProducts(filtered);
+  actualizarContador();
 }
 
 
