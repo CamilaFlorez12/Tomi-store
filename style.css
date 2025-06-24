@@ -478,6 +478,7 @@ header .fa-bars{
     header .fa-bars{
         display: block;
     }
+    
     header .navbar{
         position: absolute;
         top: 100%;
@@ -575,12 +576,13 @@ header .fa-bars{
 }
 .ri-shopping-cart-2-line{
     font-size: 0.8rem;
+    
 }
 .buy-car{
     padding: 0.5vh; 
 }
 .navbar i{
-    color: rgb(25, 25, 190);
+    color:pink;
 }
 .women-section p,.men-section p,.jewelry-section p,.electronics-section p{
     font-size: 1.2rem;
@@ -592,14 +594,19 @@ header .fa-bars{
     
 }
 #car-container{
-    display: flex;
-    right: 40vw;
+    display: none;
     top: 40vh;
-    width: 114px;
+    width: 80%;
 }
 .tarjet{
-    width: 20vw;
+    width:90%;
+    height: auto;
    
+}
+.shopping{
+    padding-top: 20vh;
+    height: auto;
+    min-height: 100vh;
 }
 
 }
