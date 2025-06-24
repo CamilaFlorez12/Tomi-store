@@ -415,9 +415,55 @@ header .fa-bars{
     color: black;
     font-size: 5rem;
 }
-#car-container{
-    width:80%;
+#car-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+  padding: 1rem;
+  box-sizing: border-box;
+  overflow-y: auto;
+  border-radius: 20px;
+  background-color: #1e1e1e; 
 }
+
+#car-container::-webkit-scrollbar{
+    display: none;
+}
+
+.tarjet {
+  display: flex;
+  flex-direction: column;
+ margin-left: 1.2rem;
+  background: #2b2b2b;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+  color: white;
+}
+
+.container-buy {
+  margin-top: auto;
+  padding-top: 1rem;
+  text-align: center;
+}
+
+.buy {
+  padding: 0.8rem 2rem;
+  background-color: #ff6f61;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.buy:hover {
+  background-color: #e65b50;
+}
+
+
 
 @media(max-width:800px){
     header{
@@ -525,6 +571,7 @@ header .fa-bars{
 }
 .container{
     height: 30vh;
+    width: 30vw;
 }
 .ri-shopping-cart-2-line{
     font-size: 0.8rem;
@@ -545,6 +592,7 @@ header .fa-bars{
     
 }
 #car-container{
+    display: flex;
     right: 40vw;
     top: 40vh;
     width: 114px;

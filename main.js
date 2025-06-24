@@ -47,6 +47,7 @@ function actualizarContador() {
   if (contador) {
     contador.textContent = car.length;
   }
+  
 }
 function agregarfuncionboton() {
   document.querySelectorAll(".add-to-cart").forEach((button) => {
@@ -65,6 +66,7 @@ function agregarfuncionboton() {
       actualizarContador();
       console.log("producto agregado:", product);
       console.log(JSON.parse(localStorage.getItem("car")));
+      
     });
   });
 }
@@ -130,7 +132,9 @@ if (document.getElementById("car-container")) {
         actualizarContador();
       });
     });
+    const contenedorBuy=document.createElement("div")
     const finishBuy=document.createElement("button")
+    contenedorBuy.classList.add("container-buy")
     finishBuy.classList.add("buy");
     finishBuy.textContent="Checkout"
     finishBuy.addEventListener("click", () => {
@@ -139,7 +143,8 @@ if (document.getElementById("car-container")) {
         renderizarCarrito();
         actualizarContador();
     });
-    contenedor.appendChild(finishBuy);
+    contenedorBuy.appendChild(finishBuy);
+    contenedor.appendChild(contenedorBuy);
     
   }
 
@@ -204,6 +209,8 @@ if (document.body.classList.contains("login-page")) {
       }
     });
     agregarfuncionboton();
+    actualizarContador();
+    renderizarCarrito();
   });
   
 
