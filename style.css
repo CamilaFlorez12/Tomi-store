@@ -52,7 +52,7 @@ header .fa-bars{
 }
 
 #home{
-    background:linear-gradient(to right,#02023c,purple,rgb(83, 9, 52));
+    background-color:rgba(128, 0, 128, 0.762);
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -113,7 +113,7 @@ header .fa-bars{
 .image-products{
     grid-area: imagen;
     width: 50%;
-    margin-left: 4vw;
+    margin: auto;
     box-shadow: 5px 5px 5px black;
 }
 
@@ -191,7 +191,7 @@ header .fa-bars{
     justify-content: center;
     padding: 2vh;
     height: auto;
-    background:linear-gradient(to right,#02023c,purple,rgb(83, 9, 52));
+    background-color: rgba(128, 0, 128, 0.762);
 }
 
 .container {
@@ -206,6 +206,8 @@ header .fa-bars{
     border-radius: 10px;
     padding: 1vh;
     box-shadow: 0 0 10px darkblue;
+    align-items: center;
+    justify-content: center;
 }
 
 .list-products{
@@ -341,7 +343,7 @@ header .fa-bars{
 .categories{
     width: 100%;
     height: auto;
-    background-color: #80808030;
+    background-color: rgba(128, 0, 128, 0.762);
     display: flex;
     flex-direction: column;
 }
@@ -463,7 +465,10 @@ header .fa-bars{
   background-color: #e65b50;
 }
 
-
+#car-container{
+    display: none;
+    
+}
 
 @media(max-width:800px){
     header{
@@ -498,7 +503,6 @@ header .fa-bars{
     font-size: 3rem;
     }
     #home{
-    background:linear-gradient(to right,#02023c,purple,rgb(83, 9, 52));
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -607,6 +611,45 @@ header .fa-bars{
     padding-top: 20vh;
     height: auto;
     min-height: 100vh;
+}
+
+}
+
+@media(min-width:800px) and (max-width:1024px){
+    .information h1{
+        font-size: 4rem;
+        
+        width: 100%;
+    }
+    #home p{
+    width: 100%;
+    font-size: 3rem;
+}
+#home button{
+    padding: 2vh;
+    font-size: 2rem;
+    width: 100%;
+}
+.button{
+    margin-left: 0;
+}
+.container{
+    height: 40vh;
+    width: 30vw;
+}
+.shopping{
+    padding-top: 12vh;
+}
+#car-container{
+    display: none;
+    top: 10vh;
+    width: 25%;
+}
+.tarjet{
+    width:80%;
+}
+.tarjet img{
+    width: 50%;
 }
 
 }
