@@ -17,6 +17,39 @@ function renderProducts(lista) {
   const container = document.getElementById("shopping");
   if (!container) return;
   container.innerHTML = "";
+  const label=document.createElement("label");
+  label.textContent="Sort by:";
+  label.setAttribute("for", "order");
+
+  const order=document.createElement("select");
+  order.id="order";
+
+  const op=document.createElement("option");
+  op.value="Select"
+
+  const op1=document.createElement("option");
+  op1.value="price";
+  op1.textContent="price";
+  const op2=document.createElement("option");
+  op2.value="name";
+  op2.textContent="Name";
+  order.appendChild(op)
+  order.appendChild(op1);
+  order.appendChild(op2);
+  container.appendChild(label);
+  container.appendChild(order);
+
+order.addEventListener("change",()=>{
+  const valor=order.value;
+  let productsOrder=[...products];
+
+  if(valor==="price"){
+    productsOrder.sort((a,b)=>a.price-b.price);
+  }else if(valor==="name"){
+    productsOrder.sort((a,b)=>a.title.localeCompare(b.title));
+  }
+  renderProducts(productsOrder);
+});
 
   lista.forEach((product) => {
     const tarjeta = document.createElement("div");
@@ -235,12 +268,11 @@ if (document.body.classList.contains("login-page")) {
     filterCategory("electronics");
     agregarfuncionboton();
   });
-
+}
   function VewProducts(products) {
-    const filterPrice = products.sort((a, b) => a.price - b.price);
     const container = document.getElementById("shopping");
     container.innerHTML = "";
-    filterPrice.forEach((product) => {
+    products.forEach((product) => {
       const tarjeta = `
       <div class="box">
           <div class="container">
@@ -257,9 +289,13 @@ if (document.body.classList.contains("login-page")) {
     `;
       container.innerHTML += tarjeta;
     });
+    agregarfuncionboton();
+    actualizarContador();
   }
-}
+
 })
+
+
 // const buttonPrice = document.getElementById("price");
 // buttonPrice.addEventListener("click", () => {
 //   VewProducts(products);

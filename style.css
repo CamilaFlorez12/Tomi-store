@@ -194,6 +194,21 @@ header .fa-bars{
     background-color: rgba(128, 0, 128, 0.762);
 }
 
+#order{
+    max-height: 2vh;
+    width: 100%;
+    margin-right: 35vw;
+    margin-left: 35vw;
+    border-radius: 20px;
+    background-color: plum;
+}
+label{
+    font-size: 2rem;
+    text-align: center;
+    width: 100%;
+}
+
+
 .container {
     display: grid;
     grid-template-rows: 1fr 1fr; 
