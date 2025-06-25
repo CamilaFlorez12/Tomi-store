@@ -5,6 +5,13 @@
     text-decoration: none;
 }
 
+html{
+     scroll-behavior: smooth;
+}
+.category-page,.login-page{
+     scroll-behavior: smooth;
+}
+
 @font-face {
     font-family: 'gavoline';
     src: url(./tipografias/GavolineDemo.otf);
@@ -512,7 +519,46 @@ label{
   z-index: 999; 
   backdrop-filter: blur(2px); 
 }
+footer{
+    background-color: purple;
+    display: flex;
+    flex-direction: column;
+    color: black;
+    text-align: center;
+    font-size: 1.5rem;
+    padding-top: 2vh;
+}
 
+.redirection{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "redirection information";
+}
+
+.redirection-page{
+    grid-area: redirection;
+    display: flex;
+    flex-direction: column;
+    padding: 2vh;
+    line-height: 4rem;
+}
+.redirection-page p{
+    font-family: gavoline;
+    font-size: 2rem;
+}
+
+.contact{
+    grid-area: information;
+    display: flex;
+    flex-direction: column;
+    line-height: 4rem;
+}
+.redirection-page a{
+    color: black;
+}
+.ri-github-fill,.ri-phone-line,.ri-whatsapp-line{
+    color: black;
+}
 
 @media(max-width:800px){
     header{
@@ -562,7 +608,7 @@ label{
     justify-content: space-around;
     color: white;
     width: 100%;
-    min-height: 130vh;
+    height: 100vh;
     
 }
 
@@ -596,7 +642,7 @@ label{
    
 }
 .information h1{
-    font-size: 4rem;
+    font-size: 3rem;
     font-family:gavoline;
     text-align: center;
     width: 100%;
@@ -672,6 +718,10 @@ label{
 .button-woman,.button-men,.button-jewelery,.button-electronics{
     font-size: 1rem;
 }
+#nav,.categories{
+  scroll-margin-top:55px;
+}
+
 }
 
 @media(min-width:800px) and (max-width:1024px){
@@ -713,4 +763,7 @@ label{
 .women-section,.men-section,.jewelry-section,.electronics-section{
     width: 70%;
     }
+#nav,.categories{
+  scroll-margin-top:100px;
+}
 }
