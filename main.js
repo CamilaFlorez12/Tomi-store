@@ -4,8 +4,9 @@ async function cargarProductos() {
     const respuesta = await fetch("https://fakestoreapi.com/products");
 
     const productos = await respuesta.json();
-    products = productos;
+    
     if (!document.body.classList.contains("category-page")) {
+      products = productos;
       renderProducts(products);
       console.log("Productos cargados:", products);
     }
