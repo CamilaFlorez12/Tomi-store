@@ -10,11 +10,11 @@
 #### Página principal donde se podrá redirigir a las demás páginas.
 ![Portada Tomi store](./imagenes/Pag1%20Tomi%20store.png)
 #### Cátalogo de las prendas que se venden en el sitio web
-![Portada Tomi store](./imagenes/Pag2%20Tomi%20store.png)
+![Portada Tomi store](./imagenes/pag2%20Tomi%20store.png)
 #### Categorias divididas por prendas de mujer,hombre,joyeria y tecnología
-![Portada Tomi store](./imagenes/Pag3%20Tomi%20store.png)
+![Portada Tomi store](./imagenes/pag3%20Tomi%20store.png)
 #### Vista del carrito dónde se guardan los productos añadidos
-![Portada Tomi store](./imagenes/Pag4%20Tomi%20store.png)
+![Portada Tomi store](./imagenes/pag4%20Tomi%20store.png)
 ## Análisis de diseño de interfaz y experiencia de usuario  Tomi Store 🛍️
 
 ## 🌐 Visión general del proyecto
@@ -137,3 +137,6 @@ Buscar los productos más económicos.
 Encontrar un producto rápidamente si ya conoce su nombre.
 
 El selector se encuentra visible sobre la sección de productos, lo que lo hace fácil de encontrar y usar. Además, el ordenamiento se realiza en tiempo real sin recargar la página, haciendo que la interacción sea más rápida y fluida.
+
+## ✍️ Autora
+### Laura Camila Florez Santos.
