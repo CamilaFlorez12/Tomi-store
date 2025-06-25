@@ -8,10 +8,13 @@
 
 
 #### Página principal donde se podrá redirigir a las demás páginas.
-![Portada Tomi store](./imagenes/Captura%20de%20pantalla%202025-06-24%20212157.png)
-
-
-
+![Portada Tomi store](./imagenes/Pag1%20Tomi%20store.png)
+#### Cátalogo de las prendas que se venden en el sitio web
+![Portada Tomi store](./imagenes/Pag2%20Tomi%20store.png)
+#### Categorias divididas por prendas de mujer,hombre,joyeria y tecnología
+![Portada Tomi store](./imagenes/Pag3%20Tomi%20store.png)
+#### Vista del carrito dónde se guardan los productos añadidos
+![Portada Tomi store](./imagenes/Pag4%20Tomi%20store.png)
 ## Análisis de diseño de interfaz y experiencia de usuario  Tomi Store 🛍️
 
 ## 🌐 Visión general del proyecto
