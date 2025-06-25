@@ -280,8 +280,16 @@ label{
 .button-woman,.button-men,.button-jewelery,.button-electronics{
     font-family:cinzel;
     padding: 1.5vh;
+    border-radius: 10px;
+    background-color:plum;
+    width: 50%;
+    font-size: 1.5rem;
    
 }
+.button-woman:hover,.button-men:hover,.button-jewelery:hover,.button-electronics:hover{
+    background-color: purple;
+}
+
 .container-opcion{
     background:linear-gradient(to right,#02023c,purple,rgb(83, 9, 52));
 }
@@ -296,7 +304,7 @@ label{
     right: 0;
     top: 10vh;
     width: 300px;
-    z-index: 1000;
+    z-index: 9999;
     padding: 20px;
     flex-direction: column;
 }
@@ -368,14 +376,23 @@ label{
     justify-content: space-between;
     align-items: center;
     padding: 5vh;
-    height: 50vh;
-    width: 50%;
-    margin-left: 25vw;
+    height: 60vh;
+    width: 40%;
+    margin:auto;
     box-shadow: 3px 3px 5px #00000082;
     font-size: 2rem;
     margin-bottom: 5vh;
     background-color: white;
+    border-radius: 20px;
+    text-align: center;
+    transition: transform 0.3s ease;
 }
+
+.women-section:hover,.men-section:hover,.jewelry-section:hover,.electronics-section:hover{
+    transform: scale(1.1);
+}
+
+
 .ri-t-shirt-fill{
     background-color: #e52545;
     color: white;
@@ -484,6 +501,18 @@ label{
     display: none;
     
 }
+#overlay {
+  display: none; 
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5); 
+  z-index: 999; 
+  backdrop-filter: blur(2px); 
+}
+
 
 @media(max-width:800px){
     header{
@@ -498,7 +527,17 @@ label{
     header .fa-bars{
         display: block;
     }
-    
+    .categories{
+        padding: 0;
+    }
+
+    .women-section,.men-section,.jewelry-section,.electronics-section{
+    padding: 5vh;
+    height: 50vh;
+    width: 80%;
+    margin:auto;
+    margin-bottom: 5vh;
+    }
     header .navbar{
         position: absolute;
         top: 100%;
@@ -530,18 +569,20 @@ label{
 #home p{
     width: 100%;
     text-align: center;
-    line-height: 5vh;
+    line-height: 3vh;
     padding: 0vh;
-    font-size: 2rem;
+    font-size: 1rem;
 }
 
 #home button{
     width: 100%;
+    padding: 0.5rem;
     font-size: 1.5rem;
     
 }
 .button{
     margin-left: 0;
+    width: 100%;
 }
 
 .information{
@@ -579,7 +620,8 @@ label{
 }
 .search__input {
 
-  width: 50vw;
+  width: 40vw;
+  margin-left: 4vw;
 }
 
 .name-product{
@@ -627,7 +669,9 @@ label{
     height: auto;
     min-height: 100vh;
 }
-
+.button-woman,.button-men,.button-jewelery,.button-electronics{
+    font-size: 1rem;
+}
 }
 
 @media(min-width:800px) and (max-width:1024px){
@@ -666,5 +710,7 @@ label{
 .tarjet img{
     width: 50%;
 }
-
+.women-section,.men-section,.jewelry-section,.electronics-section{
+    width: 70%;
+    }
 }

@@ -128,27 +128,32 @@ if (document.body.classList.contains("category-page")) {
 
 
 
-if (document.getElementById("car-container")) {
+if  (document.body.classList.contains("login-page") || 
+  document.body.classList.contains("category-page") ){
   const contenedor = document.getElementById("car-container");
+  const car= document.querySelector(".ri-shopping-cart-2-line");
+  const cloting = document.getElementById("car-container");
+  const overlay = document.getElementById("overlay");
 
   function renderizarCarrito() {
     const carrito = JSON.parse(localStorage.getItem("car")) || [];
     contenedor.innerHTML = "";
+
     if (carrito.length === 0) {
-      contenedor.innerHTML = `<h2 style="text-align:center; color:white;">No hay Productos en el carrito</h2>`;
+      contenedor.innerHTML = `<h2 style="text-align:center; color:white;">Your cart is empty</h2>`;
       return;
     }
+
     carrito.forEach((product, index) => {
       const tarjeta = document.createElement("div");
       tarjeta.classList.add("tarjet");
       tarjeta.innerHTML = `
-      <p class="cantidad">Cantidad:${product.cantidad}</p>
-      <img src="${product.image}" alt="${product.title}">
-      <h3 class="name-product">${product.title}</h3>
-      <p class="money-product">$${product.price}</p>
-      <button class="eliminate" data-index="${index}">Delete</button>
-      
-    `;
+        <p class="cantidad">Cantidad: ${product.cantidad}</p>
+        <img src="${product.image}" alt="${product.title}">
+        <h3 class="name-product">${product.title}</h3>
+        <p class="money-product">$${product.price}</p>
+        <button class="eliminate" data-index="${index}">Delete</button>
+      `;
       contenedor.appendChild(tarjeta);
     });
     const buttonEliminate = document.querySelectorAll(".eliminate");
@@ -172,7 +177,7 @@ if (document.getElementById("car-container")) {
     finishBuy.classList.add("buy");
     finishBuy.textContent="Checkout"
     finishBuy.addEventListener("click", () => {
-      alert("Compra Realizada")
+      alert("Thank you for your purchase💗")
         localStorage.removeItem("car");
         renderizarCarrito();
         actualizarContador();
@@ -181,19 +186,22 @@ if (document.getElementById("car-container")) {
     contenedor.appendChild(contenedorBuy);
     
   }
-
-  const car = document.querySelector(".ri-shopping-cart-2-line");
-  const cloting = document.getElementById("car-container");
-  car.addEventListener("click", () => {
-    if (cloting.style.display === "none" || cloting.style.display === "") {
-      cloting.style.display = "flex";
+if (car && cloting && overlay) {
+    car.addEventListener("click", () => {
+      const isHidden = cloting.style.display === "none" || cloting.style.display === "";
+      cloting.style.display = isHidden ? "flex" : "none";
       cloting.style.flexDirection = "column";
-      renderizarCarrito();
-    } else {
-      cloting.style.display = "none";
-    }
-  });
+      overlay.style.display = isHidden ? "block" : "none";
 
+      if (isHidden) renderizarCarrito();
+    });
+
+    overlay.addEventListener("click", () => {
+      cloting.style.display = "none";
+      overlay.style.display = "none";
+    });
+  }
+  
   renderizarCarrito();
 }
 
@@ -270,34 +278,9 @@ if (document.body.classList.contains("login-page")) {
     agregarfuncionboton();
   });
 }
-  function VewProducts(products) {
-    const container = document.getElementById("shopping");
-    container.innerHTML = "";
-    products.forEach((product) => {
-      const tarjeta = `
-      <div class="box">
-          <div class="container">
-            <img src="${product.image}" alt="${product.title}" class="image-products">
-            <div class="list-products">
-              <h3 class="name-product">${product.title}</h3>
-              <p class="money-product">$${product.price}</p>
-              <div class="buy-car">
-                <a href="#car-shopping"><button><i class="ri-shopping-cart-2-line"></i></button></a>
-              </div>
-            </div>
-          </div>
-          </div>
-    `;
-      container.innerHTML += tarjeta;
-    });
-    agregarfuncionboton();
-    actualizarContador();
-  }
+
 
 })
 
 
-// const buttonPrice = document.getElementById("price");
-// buttonPrice.addEventListener("click", () => {
-//   VewProducts(products);
-// })
+
