@@ -1,8 +1,8 @@
 let products = [];
-
+let response="https://fakestoreapi.com/products";
 async function cargarProductos() {
   try {
-    const respuesta = await fetch("https://fakestoreapi.com/products");
+    const respuesta = await fetch(response)
     const productos = await respuesta.json();
 
     if (!document.body.classList.contains("category-page")) {
@@ -84,8 +84,12 @@ function renderProducts(lista) {
 function actualizarContador() {
   const car = JSON.parse(localStorage.getItem("car")) || [];
   const contador = document.querySelector(".contador");
+  let total=0;
+  car.forEach((product)=>{
+    total+=product.cantidad
+  })
   if (contador) {
-    contador.textContent = car.length;
+    contador.textContent = total;
   }
 }
 
@@ -159,6 +163,7 @@ if (
         <h3 class="name-product">${product.title}</h3>
         <p class="money-product">$${product.price}</p>
         <button class="eliminate" data-index="${index}">Delete</button>
+        <button class="add" data-index="${index}">Add</button>
       `;
       contenedor.appendChild(tarjeta);
     });
@@ -178,6 +183,20 @@ if (
         actualizarContador();
       });
     });
+
+    const buttonAdd=document.querySelectorAll(".add");
+    buttonAdd.forEach((button)=>{
+      button.addEventListener("click",()=>{
+        const index=parseInt(button.getAttribute("data-index"));
+        const car=JSON.parse(localStorage.getItem("car"))||[];
+        if(car[index].cantidad){
+          car[index].cantidad+=1;
+        }
+        localStorage.setItem("car",JSON.stringify(car));
+        renderizarCarrito();
+        actualizarContador();
+      })
+    })
 
     const contenedorBuy = document.createElement("div");
     const finishBuy = document.createElement("button");
