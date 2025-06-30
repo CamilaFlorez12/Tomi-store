@@ -60,21 +60,47 @@ function renderProducts(lista) {
   lista.forEach((product) => {
     const tarjeta = document.createElement("div");
     tarjeta.className = "box";
-    tarjeta.innerHTML = `
-      <div class="container">
-        <img src="${product.image}" alt="${product.title}" class="image-products">
-        <div class="list-products">
-          <h3 class="name-product">${product.title}</h3>
-          <p class="money-product">$${product.price}</p>
-          <div class="buy-car">
-            <button class="add-to-cart" data-id="${product.id}">
-              <i class="ri-shopping-cart-2-line"></i>
-            </button>
-          </div>
-        </div>
-      </div>
-    `;
-    container.appendChild(tarjeta);
+
+    const container=document.createElement("div");
+    container.classList.add("container");
+
+    const imagen=document.createElement("img");
+    imagen.classList.add("image-products")
+    imagen.src=product.image;
+    imagen.alt=product.title;
+
+    const price=document.createElement("p");
+    price.classList.add("money-product");
+    price.textContent=`$${product.price}`;
+
+    const title=document.createElement("h3");
+    title.classList.add("name-product");
+    title.textContent=`${product.title}`;
+    
+    const buyCart=document.createElement("div");
+    buyCart.classList.add("buy-car");
+
+    const boton=document.createElement("button");
+    boton.classList.add("add-to-cart");
+    boton.setAttribute("data-id",product.id);
+
+    const icono=document.createElement("i");
+    icono.classList.add("ri-shopping-cart-2-line");
+
+    boton.appendChild(icono);
+    buyCart.appendChild(boton);
+
+    const listProducts=document.createElement("div");
+    listProducts.classList.add("list-products");
+    listProducts.appendChild(title);
+    listProducts.appendChild(price);
+    listProducts.appendChild(buyCart);
+
+    container.appendChild(imagen);
+    container.appendChild(listProducts);
+    tarjeta.appendChild(container);
+
+    document.getElementById("shopping").appendChild(tarjeta);
   });
 
   agregarfuncionboton();
@@ -157,14 +183,40 @@ if (
     carrito.forEach((product, index) => {
       const tarjeta = document.createElement("div");
       tarjeta.classList.add("tarjet");
-      tarjeta.innerHTML = `
-        <p class="cantidad">Cantidad: ${product.cantidad}</p>
-        <img src="${product.image}" alt="${product.title}">
-        <h3 class="name-product">${product.title}</h3>
-        <p class="money-product">$${product.price}</p>
-        <button class="eliminate" data-index="${index}">Delete</button>
-        <button class="add" data-index="${index}">Add</button>
-      `;
+
+      const text=document.createElement("p");
+      text.classList.add("cantidad");
+      text.textContent=`Cantidad: $${product.cantidad}`;
+
+      const imagen=document.createElement("img");
+      imagen.src=`${product.image}`;
+      imagen.alt=`${product.title}`;
+
+      const title=document.createElement("h3");
+      title.classList.add("name-product");
+      title.textContent=`${product.title}`;
+
+      const text2=document.createElement("p");
+      text2.classList.add("money-product");
+      text2.textContent=`$${product.price}`;
+
+      const buttonRemove=document.createElement("button");
+      buttonRemove.classList.add("eliminate");
+      buttonRemove.setAttribute("data-index",`${index}`)
+      buttonRemove.textContent="Delete";
+
+      const buttonAdd=document.createElement("button");
+      buttonAdd.classList.add("add");
+      buttonAdd.setAttribute("data-index",`${index}`);
+      buttonAdd.textContent="Add"
+
+      tarjeta.appendChild(text);
+      tarjeta.appendChild(imagen);
+      tarjeta.appendChild(title);
+      tarjeta.appendChild(text2);
+      tarjeta.appendChild(buttonRemove);
+      tarjeta.appendChild(buttonAdd);
+
       contenedor.appendChild(tarjeta);
     });
 
@@ -252,35 +304,23 @@ document.addEventListener("DOMContentLoaded", () => {
       window.location.href = "category.html";
     }
 
+    
     const searchbar = document.querySelector(".search__input");
-    searchbar.addEventListener("input", () => {
-      const valueInput = searchbar.value.toLowerCase();
-      document.getElementById("shopping").innerHTML = "";
-      products.forEach((product) => {
-        if (product.title.toLowerCase().includes(valueInput)) {
-          const tarjeta = document.createElement("div");
-          tarjeta.className = "box";
-          tarjeta.innerHTML = `
-            <div class="container">
-              <img src="${product.image}" alt="${product.title}" class="image-products">
-              <div class="list-products">
-                <h3 class="name-product">${product.title}</h3>
-                <p class="money-product">$${product.price}</p>
-                <div class="buy-car">
-                  <button class="add-to-cart" data-id="${product.id}">
-                    <i class="ri-shopping-cart-2-line"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-          `;
-          document.getElementById("shopping").appendChild(tarjeta);
-        }
-      });
-      agregarfuncionboton();
-      actualizarContador();
-      renderizarCarrito();
-    });
+searchbar.addEventListener("input", () => {
+  const valueInput = searchbar.value.toLowerCase();
+
+  if (valueInput === "") {
+    renderProducts(products);
+  } else {
+    const resultados = products.filter(product =>
+      product.title.toLowerCase().includes(valueInput)
+    );
+    renderProducts(resultados);
+  }
+
+  actualizarContador();
+});
+
 
     const buttonWomen = document.getElementById("button-women");
     const buttonMen = document.getElementById("button-men");
