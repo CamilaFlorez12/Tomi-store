@@ -1,5 +1,6 @@
 let products = [];
-let response="https://fakestoreapi.com/products";
+let favoritos = [];
+let response = "https://fakestoreapi.com/products";
 async function cargarProductos() {
   try {
     const respuesta = await fetch(response)
@@ -61,58 +62,105 @@ function renderProducts(lista) {
     const tarjeta = document.createElement("div");
     tarjeta.className = "box";
 
-    const container=document.createElement("div");
+    const container = document.createElement("div");
     container.classList.add("container");
 
-    const imagen=document.createElement("img");
+    const imagen = document.createElement("img");
     imagen.classList.add("image-products")
-    imagen.src=product.image;
-    imagen.alt=product.title;
+    imagen.src = product.image;
+    imagen.alt = product.title;
 
-    const price=document.createElement("p");
+    const price = document.createElement("p");
     price.classList.add("money-product");
-    price.textContent=`$${product.price}`;
+    price.textContent = `$${product.price}`;
 
-    const title=document.createElement("h3");
+    const title = document.createElement("h3");
     title.classList.add("name-product");
-    title.textContent=`${product.title}`;
-    
-    const buyCart=document.createElement("div");
+    title.textContent = `${product.title}`;
+
+    const buyCart = document.createElement("div");
     buyCart.classList.add("buy-car");
 
-    const boton=document.createElement("button");
+    const boton = document.createElement("button");
     boton.classList.add("add-to-cart");
-    boton.setAttribute("data-id",product.id);
+    boton.setAttribute("data-id", product.id);
 
-    const icono=document.createElement("i");
+    const icono = document.createElement("i");
     icono.classList.add("ri-shopping-cart-2-line");
+
+
+    
+    const AñadirFAvoritos = document.createElement("button");
+    AñadirFAvoritos.classList.add("add-favorito");
+    AñadirFAvoritos.textContent = "Favorito";
+    AñadirFAvoritos.addEventListener("click", () => {
+      console.log(favoritos);
+      if (estaEnFavoritos) {
+        quitarFavorito();
+        AñadirFAvoritos.style.backgroundColor = "red";
+        AñadirFAvoritos.textContent = "Quitar favorito"
+      } else {
+        agregarFavorito();
+        AñadirFAvoritos.style.backgroundColor = "pink";
+        AñadirFAvoritos.textContent = "Añadir Favorito";
+        const productsfavoritos=localStorage.getItem("productsfavoritos")
+        if(productsfavoritos){
+          favoritos.JSON.parse(productsfavoritos);}
+       
+      }
+    }
+
+    )
+
 
     boton.appendChild(icono);
     buyCart.appendChild(boton);
 
-    const listProducts=document.createElement("div");
+    const listProducts = document.createElement("div");
     listProducts.classList.add("list-products");
     listProducts.appendChild(title);
     listProducts.appendChild(price);
     listProducts.appendChild(buyCart);
+    listProducts.appendChild(AñadirFAvoritos);
 
     container.appendChild(imagen);
     container.appendChild(listProducts);
     tarjeta.appendChild(container);
 
     document.getElementById("shopping").appendChild(tarjeta);
+    
   });
+
 
   agregarfuncionboton();
   actualizarContador();
+
+}
+
+
+
+function agregarFavorito(products) {
+  favoritos.push(products);
+  localStorage.setItem("productsfavoritos", JSON.stringify(favoritos))
+}
+
+function estaEnFavoritos(products) {
+  favoritos = favoritos.some((fav) =>
+    fav.title = products.title)
+}
+
+function quitarFavorito(products) {
+  favoritos = favoritos.filter((fav) =>
+    fav.title !== products.title);
+  localStorage.setItem("productsfavoritos", JSON.stringify(favoritos));
 }
 
 function actualizarContador() {
   const car = JSON.parse(localStorage.getItem("car")) || [];
   const contador = document.querySelector(".contador");
-  let total=0;
-  car.forEach((product)=>{
-    total+=product.cantidad
+  let total = 0;
+  car.forEach((product) => {
+    total += product.cantidad
   })
   if (contador) {
     contador.textContent = total;
@@ -160,6 +208,19 @@ if (document.body.classList.contains("category-page")) {
   console.log("Productos filtrados:", products);
   renderProducts(filtered);
   actualizarContador();
+
+  const parteFavoritos=document.getElementById("favoritos");
+parteFavoritos.createElement("div");
+const botonFavoritos=createElement("button");
+const titulo=createElement("h2");
+titulo.textContent="FAvoritos";
+botonFavoritos.textContent="Ver favoritos";
+const productsfavoritos=localStorage.getItem("productsfavoritos")
+if(productsfavoritos){
+  favoritos.JSON.parse(productsfavoritos);}
+
+parteFavoritos.appendChild(botonFavoritos);
+renderProducts(parteFavoritos);
 }
 
 if (
@@ -184,31 +245,31 @@ if (
       const tarjeta = document.createElement("div");
       tarjeta.classList.add("tarjet");
 
-      const text=document.createElement("p");
+      const text = document.createElement("p");
       text.classList.add("cantidad");
-      text.textContent=`Cantidad: $${product.cantidad}`;
+      text.textContent = `Cantidad: $${product.cantidad}`;
 
-      const imagen=document.createElement("img");
-      imagen.src=`${product.image}`;
-      imagen.alt=`${product.title}`;
+      const imagen = document.createElement("img");
+      imagen.src = `${product.image}`;
+      imagen.alt = `${product.title}`;
 
-      const title=document.createElement("h3");
+      const title = document.createElement("h3");
       title.classList.add("name-product");
-      title.textContent=`${product.title}`;
+      title.textContent = `${product.title}`;
 
-      const text2=document.createElement("p");
+      const text2 = document.createElement("p");
       text2.classList.add("money-product");
-      text2.textContent=`$${product.price}`;
+      text2.textContent = `$${product.price}`;
 
-      const buttonRemove=document.createElement("button");
+      const buttonRemove = document.createElement("button");
       buttonRemove.classList.add("eliminate");
-      buttonRemove.setAttribute("data-index",`${index}`)
-      buttonRemove.textContent="Delete";
+      buttonRemove.setAttribute("data-index", `${index}`)
+      buttonRemove.textContent = "Delete";
 
-      const buttonAdd=document.createElement("button");
+      const buttonAdd = document.createElement("button");
       buttonAdd.classList.add("add");
-      buttonAdd.setAttribute("data-index",`${index}`);
-      buttonAdd.textContent="Add"
+      buttonAdd.setAttribute("data-index", `${index}`);
+      buttonAdd.textContent = "Add"
 
       tarjeta.appendChild(text);
       tarjeta.appendChild(imagen);
@@ -236,15 +297,15 @@ if (
       });
     });
 
-    const buttonAdd=document.querySelectorAll(".add");
-    buttonAdd.forEach((button)=>{
-      button.addEventListener("click",()=>{
-        const index=parseInt(button.getAttribute("data-index"));
-        const car=JSON.parse(localStorage.getItem("car"))||[];
-        if(car[index].cantidad){
-          car[index].cantidad+=1;
+    const buttonAdd = document.querySelectorAll(".add");
+    buttonAdd.forEach((button) => {
+      button.addEventListener("click", () => {
+        const index = parseInt(button.getAttribute("data-index"));
+        const car = JSON.parse(localStorage.getItem("car")) || [];
+        if (car[index].cantidad) {
+          car[index].cantidad += 1;
         }
-        localStorage.setItem("car",JSON.stringify(car));
+        localStorage.setItem("car", JSON.stringify(car));
         renderizarCarrito();
         actualizarContador();
       })
@@ -285,6 +346,8 @@ if (
   renderizarCarrito();
 }
 
+
+
 document.addEventListener("DOMContentLoaded", () => {
   if (document.body.classList.contains("login-page")) {
     const clothes = document.getElementById("icon-clothes");
@@ -304,22 +367,22 @@ document.addEventListener("DOMContentLoaded", () => {
       window.location.href = "category.html";
     }
 
-    
+
     const searchbar = document.querySelector(".search__input");
-searchbar.addEventListener("input", () => {
-  const valueInput = searchbar.value.toLowerCase();
+    searchbar.addEventListener("input", () => {
+      const valueInput = searchbar.value.toLowerCase();
 
-  if (valueInput === "") {
-    renderProducts(products);
-  } else {
-    const resultados = products.filter(product =>
-      product.title.toLowerCase().includes(valueInput)
-    );
-    renderProducts(resultados);
-  }
+      if (valueInput === "") {
+        renderProducts(products);
+      } else {
+        const resultados = products.filter(product =>
+          product.title.toLowerCase().includes(valueInput)
+        );
+        renderProducts(resultados);
+      }
 
-  actualizarContador();
-});
+      actualizarContador();
+    });
 
 
     const buttonWomen = document.getElementById("button-women");
