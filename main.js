@@ -1,6 +1,13 @@
 let products = [];
 let favoritos = [];
 let response = "https://fakestoreapi.com/products";
+
+const favoritosGuardados = localStorage.getItem("productsfavoritos");
+if (favoritosGuardados) {
+  favoritos = JSON.parse(favoritosGuardados);
+}
+
+
 async function cargarProductos() {
   try {
     const respuesta = await fetch(response)
@@ -16,8 +23,8 @@ async function cargarProductos() {
   }
 }
 
-function renderProducts(lista) {
-  const container = document.getElementById("shopping");
+function renderProducts(lista,contenedor_id="shopping") {
+  const container = document.getElementById(contenedor_id);
   if (!container) return;
   container.innerHTML = "";
 
@@ -90,27 +97,6 @@ function renderProducts(lista) {
 
 
     
-    const AñadirFAvoritos = document.createElement("button");
-    AñadirFAvoritos.classList.add("add-favorito");
-    AñadirFAvoritos.textContent = "Favorito";
-    AñadirFAvoritos.addEventListener("click", () => {
-      console.log(favoritos);
-      if (estaEnFavoritos) {
-        quitarFavorito();
-        AñadirFAvoritos.style.backgroundColor = "red";
-        AñadirFAvoritos.textContent = "Quitar favorito"
-      } else {
-        agregarFavorito();
-        AñadirFAvoritos.style.backgroundColor = "pink";
-        AñadirFAvoritos.textContent = "Añadir Favorito";
-        const productsfavoritos=localStorage.getItem("productsfavoritos")
-        if(productsfavoritos){
-          favoritos.JSON.parse(productsfavoritos);}
-       
-      }
-    }
-
-    )
 
 
     boton.appendChild(icono);
@@ -121,7 +107,6 @@ function renderProducts(lista) {
     listProducts.appendChild(title);
     listProducts.appendChild(price);
     listProducts.appendChild(buyCart);
-    listProducts.appendChild(AñadirFAvoritos);
 
     container.appendChild(imagen);
     container.appendChild(listProducts);
@@ -137,23 +122,6 @@ function renderProducts(lista) {
 
 }
 
-
-
-function agregarFavorito(products) {
-  favoritos.push(products);
-  localStorage.setItem("productsfavoritos", JSON.stringify(favoritos))
-}
-
-function estaEnFavoritos(products) {
-  favoritos = favoritos.some((fav) =>
-    fav.title = products.title)
-}
-
-function quitarFavorito(products) {
-  favoritos = favoritos.filter((fav) =>
-    fav.title !== products.title);
-  localStorage.setItem("productsfavoritos", JSON.stringify(favoritos));
-}
 
 function actualizarContador() {
   const car = JSON.parse(localStorage.getItem("car")) || [];
@@ -208,19 +176,6 @@ if (document.body.classList.contains("category-page")) {
   console.log("Productos filtrados:", products);
   renderProducts(filtered);
   actualizarContador();
-
-  const parteFavoritos=document.getElementById("favoritos");
-parteFavoritos.createElement("div");
-const botonFavoritos=createElement("button");
-const titulo=createElement("h2");
-titulo.textContent="FAvoritos";
-botonFavoritos.textContent="Ver favoritos";
-const productsfavoritos=localStorage.getItem("productsfavoritos")
-if(productsfavoritos){
-  favoritos.JSON.parse(productsfavoritos);}
-
-parteFavoritos.appendChild(botonFavoritos);
-renderProducts(parteFavoritos);
 }
 
 if (
